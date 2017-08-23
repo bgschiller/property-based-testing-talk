@@ -36,7 +36,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <!-- Loading the mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -58,7 +58,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11642,8 +11667,10 @@ ul.typeahead-list > li > a {
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -11683,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11695,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11823,17 +11854,15 @@ a.anchor-link {
 <div class="reveal">
 <div class="slides">
 <section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Property-based-Testing">Property-based Testing<a class="anchor-link" href="#Property-based-Testing">&#182;</a></h1>
+<h1 id="Property-based-Testing">Property-based Testing<a class="anchor-link" href="#Property-based-Testing">&#182;</a></h1><h4 id="With-examples-in-Python-and-JS">With examples in Python and JS<a class="anchor-link" href="#With-examples-in-Python-and-JS">&#182;</a></h4>
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11841,8 +11870,7 @@ a.anchor-link {
 </div>
 </div>
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11850,18 +11878,16 @@ a.anchor-link {
 </div>
 </div>
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-is-generative-testing?">What is generative testing?<a class="anchor-link" href="#What-is-generative-testing?">&#182;</a></h1><p>Instead of checking a specific output for equality, describe <em>properties</em> that should be true of any output.</p>
+<h1 id="What-is-property-based-testing?">What is property-based testing?<a class="anchor-link" href="#What-is-property-based-testing?">&#182;</a></h1><p>Instead of checking a specific output for equality, describe <em>properties</em> that should be true of any output.</p>
 
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11871,11 +11897,11 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">test_sort_on_example</span><span class="p">():</span>
-    <span class="k">assert</span> <span class="n">sort</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_sort_on_example</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="nb">sorted</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -11883,8 +11909,7 @@ a.anchor-link {
 </div>
 
 </div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11894,12 +11919,12 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
 <span class="k">def</span> <span class="nf">test_sort_produces_correct_order</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
-    <span class="n">sorted_lst</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+    <span class="n">sorted_lst</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_lst</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">sorted_lst</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">sorted_lst</span><span class="p">[</span><span class="n">ix</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -11909,8 +11934,133 @@ a.anchor-link {
 </div>
 
 </div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-do-property-based/generative-testing">How to do property-based/generative testing<a class="anchor-link" href="#How-to-do-property-based/generative-testing">&#182;</a></h2><ul>
+<li>Generate an "arbitrary example" of the input for the function under test.<ul>
+<li><code>lists(integers())</code> is a generic example of a list of integers.</li>
+<li>Testing libraries have built-ins for primitive types, but we'll see later how to make more complicated structures.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Come up with "properties" of the function under test.<ul>
+<li>Not like 'obj.attribute'</li>
+<li>More like "The output of <code>sorted</code> is a list of the same length as its input"</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Use your "arbitary example" generator to run through tons of examples. Try and find a case where the property fails.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-do-I-need-a-framework?">Why do I need a framework?<a class="anchor-link" href="#Why-do-I-need-a-framework?">&#182;</a></h2><p>What's wrong with just <code>import random</code> or <code>Math.random()</code>?</p>
+<h4 id="A-(good)-generative-testing-framework-provides:">A (good) generative-testing framework provides:<a class="anchor-link" href="#A-(good)-generative-testing-framework-provides:">&#182;</a></h4>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>'shrink'-ability of failure cases.<ul>
+<li>[-389294971153641476861717385245149368395L,
+ -389294971153641476861717385244970907453L,
+ 988,
+ -88,
+ 1665,
+ 1649,
+ -389294971153641476861717385245047265893L,
+ -389294971153641476861717385244702031194L,
+ -996,
+ -389294971153641476861717385245293441936L,
+ -389294971153641476861717385245289749770L,
+ 2648,
+ -389294971153641476861717385245210696789L,
+ -957,
+ -389294971153641476861717385245236934398L,
+ -72,
+ -938,
+ -389294971153641476861717385244722191400L,
+ -389294971153641476861717385245315066655L,
+ 751,
+ -389294971153641476861717385244787482770L]</li>
+<li>becomes [0, -1]</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>specifically testing edge-cases<ul>
+<li>eg, <code>0</code>, <code>+/-Inf</code>, <code>[]</code>, <code>''</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>database of failed cases (reproducibility)<ul>
+<li>not yet in testcheck.js</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11919,17 +12069,17 @@ a.anchor-link {
 <li>"fixed-point" computations</li>
 <li>compare to a reference implementation</li>
 <li>a clear relationship between input and output</li>
+<li>start with an example and generalize it</li>
 </ul>
 
 </div>
 </div>
 </div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Roundtrip-examples">Roundtrip examples<a class="anchor-link" href="#Roundtrip-examples">&#182;</a></h1><p>Salesforce ids come in two forms:</p>
+<h4 id="How-to-come-up-with-properties?">How to come up with properties?<a class="anchor-link" href="#How-to-come-up-with-properties?">&#182;</a></h4><h2 id="Roundtrip-examples----salesforce-ids">Roundtrip examples -- salesforce ids<a class="anchor-link" href="#Roundtrip-examples----salesforce-ids">&#182;</a></h2><p>Salesforce ids come in two forms:</p>
 <ul>
 <li>case-sensitive 15-char</li>
 <li>case-insensitive 18-char</li>
@@ -11938,43 +12088,191 @@ a.anchor-link {
 </div>
 </div>
 </div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Convert between them with this algorithm:</p>
+<h3 id="Convert-from-15-to-18:">Convert from 15 to 18:<a class="anchor-link" href="#Convert-from-15-to-18:">&#182;</a></h3><ol>
+<li>Split the fifteen characters into three groups of five.</li>
+<li>For each group of five:</li>
+<li>Make a length-5 bitstring (eg <code>01001</code>) encoding whether each position is capitalized</li>
+<li>Use a lookup table to map that bitstring to a letter. Tack the letter onto the end.</li>
+<li>After doing this for each group of five, the last three positions of the id encode the capitalization of the rest of the string.</li>
+</ol>
 
 </div>
 </div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Convert-from-18-to-15:">Convert from 18 to 15:<a class="anchor-link" href="#Convert-from-18-to-15:">&#182;</a></h3><p>Just do the reverse</p>
+
+</div>
+</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">salesforce_id_18char_to_15char</span><span class="p">(</span><span class="n">sf_id</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_id</span><span class="p">):</span>
     <span class="n">sf_id</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sf_id</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">bitmask</span> <span class="o">=</span> <span class="s">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[</span><span class="mi">15</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+        <span class="n">bitmask</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[</span><span class="mi">15</span> <span class="o">+</span> <span class="n">i</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">bitmask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">j</span><span class="p">):</span>
                 <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[:</span><span class="mi">15</span><span class="p">])</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[:</span><span class="mi">15</span><span class="p">])</span>
 
 
-<span class="k">def</span> <span class="nf">salesforce_id_15char_to_18char</span><span class="p">(</span><span class="n">sf_id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">sfid_15_to_18</span><span class="p">(</span><span class="n">sf_id</span><span class="p">):</span>
     <span class="n">suffix</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="n">c</span> <span class="o">=</span> <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span>
-            <span class="k">if</span> <span class="s">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s">&#39;Z&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
                 <span class="n">flags</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">j</span>
-        <span class="n">suffix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="p">[</span><span class="n">flags</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">sf_id</span> <span class="o">+</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span>
+        <span class="n">suffix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="p">[</span><span class="n">flags</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">sf_id</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Can you spot the error?</em></p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-can-we-test?">What can we test?<a class="anchor-link" href="#What-can-we-test?">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Passing through both conversions, an 18-char id comes out the same</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">SF_18_CHAR_IDS</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_18_to_15_to_18_roundtrip</span><span class="p">(</span><span class="n">sf_18_char</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">sf_18_char</span> <span class="o">==</span> <span class="n">sfid_15_to_18</span><span class="p">(</span><span class="n">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_18_char</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_18_to_15_to_18_roundtrip</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Passing through both conversions, a 15-char id comes out the same</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">SF_15_CHAR_IDS</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_15_to_18_to_15_roundtrip</span><span class="p">(</span><span class="n">sf_15_char</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">sf_15_char</span> <span class="o">==</span> <span class="n">sfid_18_to_15</span><span class="p">(</span><span class="n">sfid_15_to_18</span><span class="p">(</span><span class="n">sf_15_char</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_15_to_18_to_15_roundtrip</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>no problems so far, maybe we're good?</em></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>An 18-char id should be case-insensitive</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">SF_18_CHAR_IDS</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_18_char_is_case_insensitive</span><span class="p">(</span><span class="n">sf_18_char</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">all_same</span><span class="p">(</span>
+        <span class="n">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_18_char</span><span class="p">),</span>
+        <span class="n">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_18_char</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
+        <span class="n">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_18_char</span><span class="o">.</span><span class="n">upper</span><span class="p">()),</span>
+        <span class="n">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_18_char</span><span class="o">.</span><span class="n">swapcase</span><span class="p">()))</span>
 </pre></div>
 
 </div>
@@ -11984,17 +12282,974 @@ a.anchor-link {
 </div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_18_char_is_case_insensitive</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div></section></section>
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Falsifying example: test_18_char_is_case_insensitive(sf_18_char=&#39;00600000002nxMDaay&#39;)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-10-b926b06fa861&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>test_18_char_is_case_insensitive<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-9-7fb62f71f9bd&gt;</span> in <span class="ansi-cyan-fg">test_18_char_is_case_insensitive</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-blue-fg">@</span>given<span class="ansi-blue-fg">(</span>sampled_from<span class="ansi-blue-fg">(</span>SF_18_CHAR_IDS<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">def</span> test_18_char_is_case_insensitive<span class="ansi-blue-fg">(</span>sf_18_char<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     assert all_same(
+<span class="ansi-green-intense-fg ansi-bold">      4</span>         sfid_18_to_15<span class="ansi-blue-fg">(</span>sf_18_char<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>         sfid_18_to_15<span class="ansi-blue-fg">(</span>sf_18_char<span class="ansi-blue-fg">.</span>lower<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+
+<span class="ansi-green-fg">~/.virtualenvs/property-based-testing-talk/lib/python3.5/site-packages/hypothesis/core.py</span> in <span class="ansi-cyan-fg">wrapped_test</span><span class="ansi-blue-fg">(*arguments, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    719</span>             state = StateForActualGivenExecution(
+<span class="ansi-green-intense-fg ansi-bold">    720</span>                 test_runner, search_strategy, test, settings, random)
+<span class="ansi-green-fg">--&gt; 721</span><span class="ansi-red-fg">             </span>state<span class="ansi-blue-fg">.</span>run<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    722</span> 
+<span class="ansi-green-intense-fg ansi-bold">    723</span>         <span class="ansi-green-fg">for</span> attr <span class="ansi-green-fg">in</span> dir<span class="ansi-blue-fg">(</span>test<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.virtualenvs/property-based-testing-talk/lib/python3.5/site-packages/hypothesis/core.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    612</span>                     reify_and_execute(
+<span class="ansi-green-intense-fg ansi-bold">    613</span>                         self<span class="ansi-blue-fg">.</span>search_strategy<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>test<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">--&gt; 614</span><span class="ansi-red-fg">                         </span>print_example<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> is_final<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span>
+<span class="ansi-green-intense-fg ansi-bold">    615</span>                     ))
+<span class="ansi-green-intense-fg ansi-bold">    616</span>         <span class="ansi-green-fg">except</span> <span class="ansi-blue-fg">(</span>UnsatisfiedAssumption<span class="ansi-blue-fg">,</span> StopTest<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.virtualenvs/property-based-testing-talk/lib/python3.5/site-packages/hypothesis/executors.py</span> in <span class="ansi-cyan-fg">default_new_style_executor</span><span class="ansi-blue-fg">(data, function)</span>
+<span class="ansi-green-intense-fg ansi-bold">     56</span> 
+<span class="ansi-green-intense-fg ansi-bold">     57</span> <span class="ansi-green-fg">def</span> default_new_style_executor<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">,</span> function<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 58</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> function<span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     59</span> 
+<span class="ansi-green-intense-fg ansi-bold">     60</span> 
+
+<span class="ansi-green-fg">~/.virtualenvs/property-based-testing-talk/lib/python3.5/site-packages/hypothesis/core.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(data)</span>
+<span class="ansi-green-intense-fg ansi-bold">    113</span>                     lambda: &#39;Trying example: %s(%s)&#39; % (
+<span class="ansi-green-intense-fg ansi-bold">    114</span>                         test.__name__, arg_string(test, args, kwargs)))
+<span class="ansi-green-fg">--&gt; 115</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> test<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    116</span>     <span class="ansi-green-fg">return</span> run
+<span class="ansi-green-intense-fg ansi-bold">    117</span> 
+
+<span class="ansi-green-fg">&lt;ipython-input-9-7fb62f71f9bd&gt;</span> in <span class="ansi-cyan-fg">test_18_char_is_case_insensitive</span><span class="ansi-blue-fg">(sf_18_char)</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span>         sfid_18_to_15<span class="ansi-blue-fg">(</span>sf_18_char<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>         sfid_18_to_15<span class="ansi-blue-fg">(</span>sf_18_char<span class="ansi-blue-fg">.</span>lower<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">         </span>sfid_18_to_15<span class="ansi-blue-fg">(</span>sf_18_char<span class="ansi-blue-fg">.</span>upper<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>         sfid_18_to_15(sf_18_char.swapcase()))
+
+<span class="ansi-green-fg">&lt;ipython-input-4-7ba554829509&gt;</span> in <span class="ansi-cyan-fg">sfid_18_to_15</span><span class="ansi-blue-fg">(sf_id)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span>     sf_id <span class="ansi-blue-fg">=</span> list<span class="ansi-blue-fg">(</span>sf_id<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span>     <span class="ansi-green-fg">for</span> i <span class="ansi-green-fg">in</span> range<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">3</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 4</span><span class="ansi-red-fg">         </span>bitmask <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="ansi-blue-fg">.</span>index<span class="ansi-blue-fg">(</span>sf_id<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">15</span> <span class="ansi-blue-fg">+</span> i<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>         <span class="ansi-green-fg">for</span> j <span class="ansi-green-fg">in</span> range<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span>             <span class="ansi-green-fg">if</span> bitmask <span class="ansi-blue-fg">&amp;</span> <span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">1</span> <span class="ansi-blue-fg">&lt;&lt;</span> j<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">ValueError</span>: substring not found</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_id</span><span class="p">):</span>
+    <span class="n">sf_id</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sf_id</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">bitmask</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[</span><span class="mi">15</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c1"># &lt;-- added .lower()</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">bitmask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">j</span><span class="p">):</span>
+                <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[:</span><span class="mi">15</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_18_char_is_case_insensitive</span><span class="p">()</span> <span class="c1"># now it passes!</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-properties?">How to come up with properties?<a class="anchor-link" href="#How-to-come-up-with-properties?">&#182;</a></h4><h2 id="Roundtrip-examples----normalize/denormalize">Roundtrip examples -- normalize/denormalize<a class="anchor-link" href="#Roundtrip-examples----normalize/denormalize">&#182;</a></h2><p>In NREL/openstudio-geometry-editor, we store a geometry object like:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="err">id:</span> <span class="err">1,</span>
+  <span class="err">vertices:</span> <span class="err">[</span>
+    <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span>
+    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span>
+  <span class="err">],</span>
+  <span class="err">edges:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;a&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;b&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;b&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;d&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;c&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;d&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;a&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;c&#39;</span> <span class="p">},</span>
+  <span class="p">]</span><span class="err">,</span>
+  <span class="err">faces:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;top&#39;,</span> <span class="err">edgeRefs:</span> <span class="err">[</span>
+      <span class="err">{edge_id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">reverse:</span> <span class="err">false</span><span class="p">},</span> <span class="p">{</span><span class="err">edge_id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">reverse:</span> <span class="err">false</span><span class="p">},</span>
+      <span class="p">{</span><span class="err">edge_id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">reverse:</span> <span class="err">true</span><span class="p">},</span> <span class="p">{</span><span class="err">edge_id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">reverse:</span> <span class="err">true</span><span class="p">},</span>
+    <span class="p">]</span><span class="err">},</span>
+  <span class="err">],</span>
+<span class="err">}</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-properties-example:-normalize/denormalize">How to come up with properties example: normalize/denormalize<a class="anchor-link" href="#How-to-come-up-with-properties-example:-normalize/denormalize">&#182;</a></h4><p>Often, a denormalized structure is easier to work with:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="err">id:</span> <span class="err">1,</span>
+  <span class="err">vertices:</span> <span class="err">[</span>
+    <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span>
+    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span>
+  <span class="err">],</span>
+  <span class="err">edges:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+  <span class="p">]</span><span class="err">,</span>
+  <span class="err">faces:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;top&#39;,</span> <span class="err">edgeRefs:</span> <span class="err">[</span>
+      <span class="err">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+        <span class="err">reverse:</span> <span class="kc">false</span> <span class="err">}</span><span class="p">,</span>
+      <span class="p">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+        <span class="err">reverse:</span> <span class="kc">false</span> <span class="err">}</span><span class="p">,</span>
+      <span class="p">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+        <span class="err">reverse:</span> <span class="kc">true</span> <span class="err">}</span><span class="p">,</span>
+      <span class="p">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
+        <span class="err">reverse:</span> <span class="kc">true</span> <span class="err">}</span><span class="p">,</span>
+    <span class="p">]</span><span class="err">},</span>
+  <span class="err">],</span>
+<span class="err">}</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-properties-example:-normalize/denormalize">How to come up with properties example: normalize/denormalize<a class="anchor-link" href="#How-to-come-up-with-properties-example:-normalize/denormalize">&#182;</a></h4><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">gen</span><span class="p">,</span> <span class="nx">check</span><span class="p">,</span> <span class="nx">property</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;testcheck&#39;</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;denormalize&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;is undone by normalize&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">check</span><span class="p">(</span><span class="nx">property</span><span class="p">(</span>
+      <span class="nx">gen</span><span class="p">.</span><span class="nx">oneOf</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">geometryExamples</span><span class="p">)),</span>
+      <span class="p">(</span><span class="nx">geom</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">assertEqual</span><span class="p">(</span>
+          <span class="nx">geom</span><span class="p">,</span>
+          <span class="nx">normalize</span><span class="p">(</span><span class="nx">denormalize</span><span class="p">(</span><span class="nx">geom</span><span class="p">)),</span>
+        <span class="p">);</span>
+      <span class="p">},</span>
+    <span class="p">));</span>
+    <span class="nx">assert</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span> <span class="s1">&#39;Property failed to verify!&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Aside:-using-testcheck.js">Aside: using testcheck.js<a class="anchor-link" href="#Aside:-using-testcheck.js">&#182;</a></h4><p><code>check(property(...))</code> won't throw an error on it's own. I wrote this helper function:</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">assertProperty</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// if last parameter is not a function, assume it&#39;s config for call to check()</span>
+  <span class="kr">const</span> <span class="nx">checkConfig</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="nx">args</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="p">{}</span> <span class="o">:</span> <span class="nx">args</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+  <span class="kd">let</span> <span class="nx">resp</span> <span class="o">=</span> <span class="nx">check</span><span class="p">(</span><span class="nx">property</span><span class="p">(...</span><span class="nx">args</span><span class="p">),</span> <span class="nx">checkConfig</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">result</span> <span class="k">instanceof</span> <span class="nb">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">resp</span> <span class="o">=</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">shrunk</span> <span class="o">||</span> <span class="nx">resp</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">resp</span><span class="p">.</span><span class="nx">result</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
+      <span class="sb">`Property failed to verify on input: </span><span class="si">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">smallest</span> <span class="o">||</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">fail</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">assert</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span> <span class="sb">`Property failed to verify! </span><span class="si">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-Properties?">How to come up with Properties?<a class="anchor-link" href="#How-to-come-up-with-Properties?">&#182;</a></h4><h2 id="&quot;Fixed-point&quot;-computations-(aka-'idempotent')">"Fixed-point" computations (aka 'idempotent')<a class="anchor-link" href="#&quot;Fixed-point&quot;-computations-(aka-'idempotent')">&#182;</a></h2><h3 id="When-applying-a-function-multiple-times-should-give-the-same-result">When applying a function multiple times should give the same result<a class="anchor-link" href="#When-applying-a-function-multiple-times-should-give-the-same-result">&#182;</a></h3><p>Examples:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sorting</span>
+<span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sort_is_fixed_point</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">a_list</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># set operations</span>
+<span class="nd">@given</span><span class="p">(</span><span class="n">sets</span><span class="p">(</span><span class="n">integers</span><span class="p">()),</span> <span class="n">sets</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_set_ops_are_idempotent</span><span class="p">(</span><span class="n">set1</span><span class="p">,</span> <span class="n">set2</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span> <span class="o">==</span> <span class="p">(</span><span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">set2</span>
+    <span class="k">assert</span> <span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span> <span class="o">==</span> <span class="p">(</span><span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span><span class="p">)</span> <span class="o">|</span> <span class="n">set2</span>
+    <span class="k">assert</span> <span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span> <span class="o">==</span> <span class="p">(</span><span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span><span class="p">)</span> <span class="o">-</span> <span class="n">set2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># first_day_of_quarter (a problem I had at my last job)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="n">datetimes</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_first_day_of_quarter_is_fixed_point</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">==</span> <span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-Properties?">How to come up with Properties?<a class="anchor-link" href="#How-to-come-up-with-Properties?">&#182;</a></h4><h2 id="Compare-to-reference-function">Compare to reference function<a class="anchor-link" href="#Compare-to-reference-function">&#182;</a></h2><h3 id="why-not-just-use-the-reference-function?">why not just <em>use</em> the reference function?<a class="anchor-link" href="#why-not-just-use-the-reference-function?">&#182;</a></h3>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>maybe yours is faster</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>maybe the reference is in another language?</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">datetimes</span><span class="p">(),</span> <span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_pg_period_string</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">base_month</span><span class="p">):</span>
+    <span class="n">py_string</span> <span class="o">=</span> <span class="n">period_string</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;quarter&#39;</span><span class="p">,</span> <span class="n">base_month</span><span class="p">)</span>
+    <span class="n">db_string</span> <span class="o">=</span> <span class="n">fetchone</span><span class="p">(</span><span class="s1">&#39;SELECT quarter_str(</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">base_month</span><span class="p">,</span> <span class="n">date</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">py_string</span> <span class="o">==</span> <span class="n">db_string</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>binary search is famously hard to get right, so maybe compare with a linear search?</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-Properties?">How to come up with Properties?<a class="anchor-link" href="#How-to-come-up-with-Properties?">&#182;</a></h4><h2 id="Describe-a-relationship-between-the-inputs-and-the-outputs">Describe a relationship between the inputs and the outputs<a class="anchor-link" href="#Describe-a-relationship-between-the-inputs-and-the-outputs">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()),</span> <span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_list_length_is_preserved_on_addition</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-come-up-with-Properties?">How to come up with Properties?<a class="anchor-link" href="#How-to-come-up-with-Properties?">&#182;</a></h4><h2 id="Start-with-an-example-and-generalize-it">Start with an example and generalize it<a class="anchor-link" href="#Start-with-an-example-and-generalize-it">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>assertEqual(prime_factors(4), [2, 2])</code></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Why not test that <code>prime_factors(2 * any_prime)</code> is <code>[that_prime, that_prime]</code></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="nx">assertProperty</span><span class="p">(</span>
+  <span class="nx">gen</span><span class="p">.</span><span class="nx">oneOf</span><span class="p">(</span><span class="nx">first10kPrimes</span><span class="p">),</span>
+  <span class="p">(</span><span class="nx">prime</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">primeFactors</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">prime</span><span class="p">),</span> <span class="p">[</span><span class="nx">prime</span><span class="p">,</span> <span class="nx">prime</span><span class="p">]),</span>
+<span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="An-Example:-merge-sort">An Example: merge sort<a class="anchor-link" href="#An-Example:-merge-sort">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lst</span>
+    
+    <span class="n">middle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
+    
+    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">left</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
+        <span class="c1"># base case: one of the arrays is empty</span>
+        <span class="k">return</span> <span class="n">left</span> <span class="ow">or</span> <span class="n">right</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ix</span><span class="p">,</span> <span class="n">jx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">ix</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">jx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">])</span>
+            <span class="n">ix</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">])</span>
+            <span class="n">jx</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="An-example:-merge-sort">An example: merge sort<a class="anchor-link" href="#An-example:-merge-sort">&#182;</a></h4><h2 id="Let's-define-some-tests">Let's define some tests<a class="anchor-link" href="#Let's-define-some-tests">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sort_produces_correct_order</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="n">sorted_lst</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_lst</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">sorted_lst</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">sorted_lst</span><span class="p">[</span><span class="n">ix</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sort_is_fixed_point</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="n">sorted_lst</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">sorted_lst</span> <span class="o">==</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">sorted_lst</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_sort_produces_correct_order</span><span class="p">()</span>
+<span class="n">test_sort_is_fixed_point</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sort_maintains_length</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="n">sorted_lst</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_lst</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sorted_list_has_same_elements</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="n">sorted_lst</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+    <span class="c1"># A Counter is a map from element of the list to the number of times</span>
+    <span class="c1"># it appears.</span>
+    <span class="k">assert</span> <span class="n">Counter</span><span class="p">(</span><span class="n">sorted_lst</span><span class="p">)</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sort_against_reference</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="an-example:-merge-sort">an example: merge sort<a class="anchor-link" href="#an-example:-merge-sort">&#182;</a></h4><p>Unfortunately, these all fail.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">printing_exception</span><span class="p">(</span><span class="n">test_sort_maintains_length</span><span class="p">)</span>
+<span class="n">printing_exception</span><span class="p">(</span><span class="n">test_sorted_list_has_same_elements</span><span class="p">)</span>
+<span class="n">printing_exception</span><span class="p">(</span><span class="n">test_sort_against_reference</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Falsifying example: test_sort_maintains_length(a_list=[0, 0])
+
+Falsifying example: test_sorted_list_has_same_elements(a_list=[0, 0])
+
+Falsifying example: test_sort_against_reference(a_list=[0, 0])
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">merge_sort</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="an-example:-merge-sort">an example: merge sort<a class="anchor-link" href="#an-example:-merge-sort">&#182;</a></h4><h2 id="Can-you-spot-the-error?">Can you spot the error?<a class="anchor-link" href="#Can-you-spot-the-error?">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lst</span>
+    
+    <span class="n">middle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
+    
+    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">left</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
+        <span class="c1"># base case: one of the arrays is empty</span>
+        <span class="k">return</span> <span class="n">left</span> <span class="ow">or</span> <span class="n">right</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ix</span><span class="p">,</span> <span class="n">jx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">ix</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">jx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">])</span>
+            <span class="n">ix</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">])</span>
+            <span class="n">jx</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We're never copying remaining elements from <code>left[ix:]</code> or <code>right[jx:]</code>.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="an-example:-merge-sort">an example: merge sort<a class="anchor-link" href="#an-example:-merge-sort">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lst</span>
+    
+    <span class="n">middle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
+    
+    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">left</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
+        <span class="c1"># base case: one of the arrays is empty</span>
+        <span class="k">return</span> <span class="n">left</span> <span class="ow">or</span> <span class="n">right</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ix</span><span class="p">,</span> <span class="n">jx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">ix</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">jx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">]:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">])</span>
+            <span class="n">ix</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">])</span>
+            <span class="n">jx</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1"># Adding this:</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">:])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">:])</span>
+    
+    
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now our tests pass...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_sort_produces_correct_order</span><span class="p">()</span>
+<span class="n">test_sort_is_fixed_point</span><span class="p">()</span>
+<span class="n">test_sort_maintains_length</span><span class="p">()</span>
+<span class="n">test_sorted_list_has_same_elements</span><span class="p">()</span>
+<span class="n">test_sort_against_reference</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-write-a-generator/strategy">How to write a generator/strategy<a class="anchor-link" href="#How-to-write-a-generator/strategy">&#182;</a></h2><p>Besides the built in generators provided by hypothesis and testcheck.js, it's easy to create your own custom generators to make examples of your domain objects.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>hypothesis provides <code>builds</code>, that takes a function and some strategies in <code>*args, **kwargs</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># example from bgschiller/hangman-api</span>
+<span class="k">def</span> <span class="nf">new_puzzle</span><span class="p">(</span><span class="n">word</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">word</span> <span class="o">=</span> <span class="n">word</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">WORDS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;word_so_far&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)),</span>
+        <span class="s1">&#39;actual_word&#39;</span><span class="p">:</span> <span class="n">word</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+        <span class="s1">&#39;guesses&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">}</span>
+<span class="n">puzzle_strategy</span> <span class="o">=</span> <span class="n">builds</span><span class="p">(</span><span class="n">new_puzzle</span><span class="p">,</span> <span class="n">word</span><span class="o">=</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">WORDS</span><span class="p">))</span>
+
+<span class="n">puzzle_strategy</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="c1">#{&#39;actual_word&#39;: &#39;TRACE&#39;,</span>
+<span class="c1"># &#39;guesses&#39;: [],</span>
+<span class="c1"># &#39;word_so_far&#39;: [&#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;]}</span>
+</pre></div>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="How-to-write-a-generator/strategy">How to write a generator/strategy<a class="anchor-link" href="#How-to-write-a-generator/strategy">&#182;</a></h4><ul>
+<li>testcheck provides <code>.then()</code> method on generators, which I frequently use alongside <code>gen.object({...})</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">genVertices</span> <span class="o">=</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
+    <span class="nx">startX</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
+    <span class="nx">startY</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
+    <span class="nx">endX</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
+    <span class="nx">endY</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
+    <span class="nx">pointsAlong</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">array</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">{</span> <span class="nx">minSize</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxSize</span><span class="o">:</span> <span class="mi">10</span> <span class="p">}),</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">suchThat</span><span class="p">(({</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">endY</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="nx">startX</span> <span class="o">!==</span> <span class="nx">endX</span> <span class="o">||</span> <span class="nx">startY</span> <span class="o">!==</span> <span class="nx">endY</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(({</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">endY</span><span class="p">,</span> <span class="nx">pointsAlong</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">toPointOnLine</span> <span class="o">=</span> <span class="nx">t</span> <span class="p">=&gt;</span> <span class="p">({</span>
+      <span class="nx">x</span><span class="o">:</span> <span class="nx">startX</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span> <span class="p">(</span><span class="nx">endX</span> <span class="o">-</span> <span class="nx">startX</span><span class="p">)),</span>
+      <span class="nx">y</span><span class="o">:</span> <span class="nx">startY</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span> <span class="p">(</span><span class="nx">endY</span> <span class="o">-</span> <span class="nx">startY</span><span class="p">)),</span>
+    <span class="p">});</span>
+
+    <span class="kr">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="cm">/* start */</span><span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">identity</span><span class="o">:</span> <span class="s1">&#39;start&#39;</span> <span class="p">},</span>
+      <span class="cm">/* end */</span><span class="p">{</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">endY</span><span class="p">,</span> <span class="nx">identity</span><span class="o">:</span> <span class="s1">&#39;end&#39;</span> <span class="p">},</span>
+      <span class="cm">/* verts */</span>
+      <span class="p">...</span><span class="nx">pointsAlong</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">toPointOnLine</span><span class="p">),</span>
+    <span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">pointsAlong</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* and a duplicate out of order for good measure */</span>
+      <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">toPointOnLine</span><span class="p">(</span><span class="nx">pointsAlong</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">arr</span><span class="p">;</span>
+  <span class="p">});</span>
+</pre></div>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="pointsAlongLine.png" alt=""></p>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Generator-example:-polygons">Generator example: polygons<a class="anchor-link" href="#Generator-example:-polygons">&#182;</a></h2><p>(I use this one in NREL/openstudio-geometry-editor). A couple caveats:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>not completely 'expressive'</li>
+<li>pretty good for testing</li>
+<li>(better than the 3-5 I would have patience to write on my own)</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="generator-example:-polygons">generator example: polygons<a class="anchor-link" href="#generator-example:-polygons">&#182;</a></h4><h2 id="A-recipe-for-a-polygon">A recipe for a polygon<a class="anchor-link" href="#A-recipe-for-a-polygon">&#182;</a></h2><ol>
+<li>Choose a point to be the center.</li>
+<li>Choose a number of vertices, $n$.</li>
+<li>For each of $n$ equal directions (eg, when $n=3$, $0^{\circ}$, $120^{\circ}$, and $240^{\circ}$)<ul>
+<li>Choose a distance, $d$ and plant a vertex that far away from the center in the direction chosen.</li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon0.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon1.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon2.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon3.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon4.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon5.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon6.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon7.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="createPolygon8.png" style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"></p>
+
+</div>
+</div>
+</div></div></section></section>
 </div>
 </div>
 

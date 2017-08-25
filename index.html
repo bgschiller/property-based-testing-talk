@@ -11984,15 +11984,7 @@ a.anchor-link {
  1665,
  1649,
  -389294971153641476861717385245047265893L,
- -389294971153641476861717385244702031194L,
- -996,
- -389294971153641476861717385245293441936L,
- -389294971153641476861717385245289749770L,
- 2648,
- -389294971153641476861717385245210696789L,
- -957,
- -389294971153641476861717385245236934398L,
- -72,
+ ...,
  -938,
  -389294971153641476861717385244722191400L,
  -389294971153641476861717385245315066655L,
@@ -12087,8 +12079,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Convert-from-18-to-15:">Convert from 18 to 15:<a class="anchor-link" href="#Convert-from-18-to-15:">&#182;</a></h3><p>Just do the reverse</p>
-
+<h3 id="Convert-from-18-to-15:--do-the-reverse">Convert from 18 to 15:  do the reverse<a class="anchor-link" href="#Convert-from-18-to-15:--do-the-reverse">&#182;</a></h3>
 </div>
 </div>
 </div></div></section><section>
@@ -12234,7 +12225,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12246,7 +12237,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></div><div class="fragment">
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
@@ -12265,7 +12256,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div></section><section>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
@@ -12352,30 +12343,17 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">print_failure_case</span><span class="p">(</span><span class="n">test_18_char_is_case_insensitive</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="c"># Avoiding tracebacks in the slides using this helper function, </span>
+<span class="n">print_failure_case</span><span class="p">(</span><span class="n">test_18_char_is_case_insensitive</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre><span class="ansi-red-intense-fg">Falsifying example: test_18_char_is_case_insensitive(sf_18_char=&#39;00600000002nxMDaay&#39;)
-</span></pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -12388,7 +12366,8 @@ a.anchor-link {
 <div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">sfid_18_to_15</span><span class="p">(</span><span class="n">sf_id</span><span class="p">):</span>
     <span class="n">sf_id</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sf_id</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">bitmask</span> <span class="o">=</span> <span class="s">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[</span><span class="mi">15</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="c"># &lt;-- added .lower()</span>
+        <span class="n">bitmask</span> <span class="o">=</span> <span class="s">&#39;abcdefghijklmnopqrstuvwxyz012345&#39;</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sf_id</span><span class="p">[</span><span class="mi">15</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+         <span class="c">#                                                   added .lower() ^</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">bitmask</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">j</span><span class="p">):</span>
                 <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sf_id</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -12422,22 +12401,22 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="How-to-come-up-with-properties?">How to come up with properties?<a class="anchor-link" href="#How-to-come-up-with-properties?">&#182;</a></h4><h2 id="Roundtrip-examples----normalize/denormalize">Roundtrip examples -- normalize/denormalize<a class="anchor-link" href="#Roundtrip-examples----normalize/denormalize">&#182;</a></h2><p>In NREL/openstudio-geometry-editor, we store a geometry object like:</p>
 <div class="highlight"><pre><span class="p">{</span>
-  <span class="err">id:</span> <span class="err">1,</span>
-  <span class="err">vertices:</span> <span class="err">[</span>
-    <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span>
-    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span>
-  <span class="err">],</span>
-  <span class="err">edges:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;a&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;b&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;b&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;d&#39;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;c&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;d&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">v1:</span> <span class="err">&#39;a&#39;,</span> <span class="err">v2:</span> <span class="err">&#39;c&#39;</span> <span class="p">},</span>
-  <span class="p">]</span><span class="err">,</span>
-  <span class="err">faces:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;top&#39;,</span> <span class="err">edgeRefs:</span> <span class="err">[</span>
-      <span class="err">{edge_id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">reverse:</span> <span class="err">false</span><span class="p">},</span> <span class="p">{</span><span class="err">edge_id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">reverse:</span> <span class="err">false</span><span class="p">},</span>
-      <span class="p">{</span><span class="err">edge_id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">reverse:</span> <span class="err">true</span><span class="p">},</span> <span class="p">{</span><span class="err">edge_id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">reverse:</span> <span class="err">true</span><span class="p">},</span>
-    <span class="p">]</span><span class="err">},</span>
-  <span class="err">],</span>
-<span class="err">}</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">vertices</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span>
+  <span class="p">],</span>
+  <span class="nx">edges</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">v2</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">v2</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">v2</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;ac&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">v2</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span> <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="nx">faces</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="nx">edgeRefs</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="nx">edge_id</span><span class="o">:</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="nx">reverse</span><span class="o">:</span> <span class="kc">false</span><span class="p">},</span> <span class="p">{</span><span class="nx">edge_id</span><span class="o">:</span> <span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="nx">reverse</span><span class="o">:</span> <span class="kc">false</span><span class="p">},</span>
+      <span class="p">{</span><span class="nx">edge_id</span><span class="o">:</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="nx">reverse</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span> <span class="p">{</span><span class="nx">edge_id</span><span class="o">:</span> <span class="s1">&#39;ac&#39;</span><span class="p">,</span> <span class="nx">reverse</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+    <span class="p">]},</span>
+  <span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -12450,30 +12429,30 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="How-to-come-up-with-properties-example:-normalize/denormalize">How to come up with properties example: normalize/denormalize<a class="anchor-link" href="#How-to-come-up-with-properties-example:-normalize/denormalize">&#182;</a></h4><p>Often, a denormalized structure is easier to work with:</p>
 <div class="highlight"><pre><span class="p">{</span>
-  <span class="err">id:</span> <span class="err">1,</span>
-  <span class="err">vertices:</span> <span class="err">[</span>
-    <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span><span class="err">,</span>
-    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span><span class="err">,</span>
-  <span class="err">],</span>
-  <span class="err">edges:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-    <span class="p">{</span> <span class="err">id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-  <span class="p">]</span><span class="err">,</span>
-  <span class="err">faces:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;top&#39;,</span> <span class="err">edgeRefs:</span> <span class="err">[</span>
-      <span class="err">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;ab&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-        <span class="err">reverse:</span> <span class="kc">false</span> <span class="err">}</span><span class="p">,</span>
-      <span class="p">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;bd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;b&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-        <span class="err">reverse:</span> <span class="kc">false</span> <span class="err">}</span><span class="p">,</span>
-      <span class="p">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;cd&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;d&#39;,</span> <span class="err">x:</span> <span class="err">4,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-        <span class="err">reverse:</span> <span class="kc">true</span> <span class="err">}</span><span class="p">,</span>
-      <span class="p">{</span> <span class="err">edge:</span> <span class="err">{</span> <span class="err">id:</span> <span class="err">&#39;ac&#39;,</span> <span class="err">v1:</span> <span class="err">{id:</span> <span class="err">&#39;a&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">16</span><span class="p">},</span> <span class="err">v</span><span class="mi">2</span><span class="err">:</span> <span class="p">{</span><span class="err">id:</span> <span class="err">&#39;c&#39;,</span> <span class="err">x:</span> <span class="err">0,</span> <span class="err">y:</span> <span class="err">10</span><span class="p">}</span> <span class="err">}</span><span class="p">,</span>
-        <span class="err">reverse:</span> <span class="kc">true</span> <span class="err">}</span><span class="p">,</span>
-    <span class="p">]</span><span class="err">},</span>
-  <span class="err">],</span>
-<span class="err">}</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">vertices</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span>
+  <span class="p">],</span>
+  <span class="nx">edges</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">}</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;ac&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="nx">faces</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="nx">edgeRefs</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="nx">edge</span><span class="o">:</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">}</span> <span class="p">},</span>
+        <span class="nx">reverse</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">edge</span><span class="o">:</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+        <span class="nx">reverse</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">edge</span><span class="o">:</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+        <span class="nx">reverse</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">edge</span><span class="o">:</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;ac&#39;</span><span class="p">,</span> <span class="nx">v1</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">16</span><span class="p">},</span> <span class="nx">v2</span><span class="o">:</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="nx">x</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+        <span class="nx">reverse</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span>
+    <span class="p">]},</span>
+  <span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -12576,13 +12555,14 @@ a.anchor-link {
 </div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="c"># first_day_of_quarter (a problem I had at my last job)</span>
 <span class="nd">@given</span><span class="p">(</span><span class="n">datetimes</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">test_first_day_of_quarter_is_fixed_point</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">==</span> <span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">dt</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">==</span>
+            <span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">first_day_of_quarter</span><span class="p">(</span><span class="n">dt</span><span class="p">)))</span>
 </pre></div>
 
 </div>
@@ -12690,7 +12670,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>assertEqual(prime_factors(4), [2, 2])</code></p>
+<div class="highlight"><pre><span class="nx">assertEqual</span><span class="p">(</span><span class="nx">prime_factors</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
 
 </div>
 </div>
@@ -12712,7 +12693,7 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="nx">assertProperty</span><span class="p">(</span>
   <span class="nx">gen</span><span class="p">.</span><span class="nx">oneOf</span><span class="p">(</span><span class="nx">first10kPrimes</span><span class="p">),</span>
-  <span class="p">(</span><span class="nx">prime</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">primeFactors</span><span class="p">(</span><span class="nx">prime</span> <span class="o">*</span> <span class="nx">prime</span><span class="p">),</span> <span class="p">[</span><span class="nx">prime</span><span class="p">,</span> <span class="nx">prime</span><span class="p">]),</span>
+  <span class="nx">prime</span> <span class="o">=&gt;</span> <span class="nx">assertEqual</span><span class="p">(</span><span class="nx">primeFactors</span><span class="p">(</span><span class="nx">prime</span> <span class="o">*</span> <span class="nx">prime</span><span class="p">),</span> <span class="p">[</span><span class="nx">prime</span><span class="p">,</span> <span class="nx">prime</span><span class="p">]),</span>
 <span class="p">);</span>
 </pre></div>
 
@@ -12809,7 +12790,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div><div class="fragment">
+</div></div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
@@ -12825,7 +12806,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
@@ -12864,11 +12845,11 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="an-example:-merge-sort">an example: merge sort<a class="anchor-link" href="#an-example:-merge-sort">&#182;</a></h4><p>Unfortunately, these all fail.</p>
+<h4 id="an-example:-merge-sort">an example: merge sort<a class="anchor-link" href="#an-example:-merge-sort">&#182;</a></h4><p>Unfortunately, these last three all fail.</p>
 
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
@@ -12899,7 +12880,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
@@ -12928,7 +12909,7 @@ a.anchor-link {
 </div>
 </div>
 
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12940,20 +12921,10 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">lst</span>
-    
-    <span class="n">middle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
-    
-    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">left</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
         <span class="c"># base case: one of the arrays is empty</span>
         <span class="k">return</span> <span class="n">left</span> <span class="ow">or</span> <span class="n">right</span>
@@ -12996,20 +12967,10 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">lst</span>
-    
-    <span class="n">middle</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
-    <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[:</span><span class="n">middle</span><span class="p">])</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">middle</span><span class="p">:])</span>
-    
-    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">left</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">right</span><span class="p">:</span>
         <span class="c"># base case: one of the arrays is empty</span>
         <span class="k">return</span> <span class="n">left</span> <span class="ow">or</span> <span class="n">right</span>
@@ -13028,7 +12989,6 @@ a.anchor-link {
     <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">ix</span><span class="p">:])</span>
     <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">jx</span><span class="p">:])</span>
     
-    
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 
@@ -13036,13 +12996,13 @@ a.anchor-link {
 </div>
 </div>
 
-</div><div class="fragment">
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now our tests pass...</p>
+<h4 id="an-example:-merge-sort">an example: merge sort<a class="anchor-link" href="#an-example:-merge-sort">&#182;</a></h4><p>Now our tests pass...</p>
 
 </div>
 </div>
@@ -13063,13 +13023,13 @@ a.anchor-link {
 </div>
 </div>
 
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-write-a-generator/strategy">How to write a generator/strategy<a class="anchor-link" href="#How-to-write-a-generator/strategy">&#182;</a></h2><p>Besides the built in generators provided by hypothesis and testcheck.js, it's easy to create your own custom generators to make examples of your domain objects.</p>
+<h2 id="How-to-write-a-generator/strategy">How to write a generator/strategy<a class="anchor-link" href="#How-to-write-a-generator/strategy">&#182;</a></h2><p>Besides the built in generators provided by hypothesis and testcheck.js, it's useful to create your own custom generators to make examples of your domain objects.</p>
 
 </div>
 </div>
@@ -13106,7 +13066,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-to-write-a-generator/strategy">How to write a generator/strategy<a class="anchor-link" href="#How-to-write-a-generator/strategy">&#182;</a></h4><p><img src="pointsAlongLine.png" alt=""></p>
+<p><img src="pointsAlongLine.png" alt=""></p>
 
 </div>
 </div>
@@ -13116,9 +13076,6 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-to-write-a-generator/strategy">How to write a generator/strategy<a class="anchor-link" href="#How-to-write-a-generator/strategy">&#182;</a></h4><ul>
-<li>testcheck provides <code>.then()</code> method on generators, which I frequently use alongside <code>gen.object({...})</code>:</li>
-</ul>
 <div class="highlight"><pre><span class="kr">const</span> <span class="nx">genVertices</span> <span class="o">=</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
     <span class="nx">startX</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
     <span class="nx">startY</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
@@ -13126,8 +13083,28 @@ a.anchor-link {
     <span class="nx">endY</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
     <span class="nx">pointsAlong</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">array</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">numberWithin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">{</span> <span class="nx">minSize</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxSize</span><span class="o">:</span> <span class="mi">10</span> <span class="p">}),</span>
   <span class="p">})</span>
-  <span class="p">.</span><span class="nx">suchThat</span><span class="p">(({</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">endY</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">startX</span> <span class="o">!==</span> <span class="nx">endX</span> <span class="o">||</span> <span class="nx">startY</span> <span class="o">!==</span> <span class="nx">endY</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(({</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">endY</span><span class="p">,</span> <span class="nx">pointsAlong</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</pre></div>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span class="p">.</span><span class="nx">suchThat</span><span class="p">(({</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">endY</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">startX</span> <span class="o">!==</span> <span class="nx">endX</span> <span class="o">||</span> <span class="nx">startY</span> <span class="o">!==</span> <span class="nx">endY</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span class="p">.</span><span class="nx">then</span><span class="p">(({</span> <span class="nx">startX</span><span class="p">,</span> <span class="nx">startY</span><span class="p">,</span> <span class="nx">endX</span><span class="p">,</span> <span class="nx">endY</span><span class="p">,</span> <span class="nx">pointsAlong</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kr">const</span> <span class="nx">toPointOnLine</span> <span class="o">=</span> <span class="nx">t</span> <span class="o">=&gt;</span> <span class="p">({</span>
       <span class="nx">x</span><span class="o">:</span> <span class="nx">startX</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span> <span class="p">(</span><span class="nx">endX</span> <span class="o">-</span> <span class="nx">startX</span><span class="p">)),</span>
       <span class="nx">y</span><span class="o">:</span> <span class="nx">startY</span> <span class="o">+</span> <span class="p">(</span><span class="nx">t</span> <span class="o">*</span> <span class="p">(</span><span class="nx">endY</span> <span class="o">-</span> <span class="nx">startY</span><span class="p">)),</span>
@@ -13149,13 +13126,13 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Generator-example:-polygons">Generator example: polygons<a class="anchor-link" href="#Generator-example:-polygons">&#182;</a></h2><p>(I use this one in NREL/openstudio-geometry-editor). A couple caveats:</p>
+<h2 id="Generator-example:-polygons">Generator example: polygons<a class="anchor-link" href="#Generator-example:-polygons">&#182;</a></h2><p>(I use this one in NREL/openstudio-geometry-editor). A caveats:</p>
 
 </div>
 </div>
@@ -13182,7 +13159,7 @@ a.anchor-link {
 <h4 id="generator-example:-polygons">generator example: polygons<a class="anchor-link" href="#generator-example:-polygons">&#182;</a></h4><h2 id="A-recipe-for-a-polygon">A recipe for a polygon<a class="anchor-link" href="#A-recipe-for-a-polygon">&#182;</a></h2><ol>
 <li>Choose a point to be the center.</li>
 <li>Choose a number of vertices, $n$.</li>
-<li>For each of $n$ equal directions (eg, when $n=3$, $0^{\circ}$, $120^{\circ}$, and $240^{\circ}$)<ul>
+<li>For each of $n$ equal directions (eg, when $n=3$: $0^{\circ}$, $120^{\circ}$, and $240^{\circ}$)<ul>
 <li>Choose a distance, $d$ and plant a vertex that far away from the center in the direction chosen.</li>
 </ul>
 </li>
@@ -13286,7 +13263,8 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="generator-example:-polygons">generator example: polygons<a class="anchor-link" href="#generator-example:-polygons">&#182;</a></h4><div class="highlight"><pre><span class="kr">const</span> <span class="nx">createIrregularPolygon</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">center</span><span class="p">,</span> <span class="nx">radii</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<p>generator example: polygons</p>
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">createIrregularPolygon</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">center</span><span class="p">,</span> <span class="nx">radii</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kr">const</span> <span class="nx">angleStep</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">)</span> <span class="o">/</span> <span class="nx">radii</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
 
   <span class="k">return</span> <span class="nx">radii</span>
@@ -13295,8 +13273,17 @@ a.anchor-link {
       <span class="nx">y</span><span class="o">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="nx">radius</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">n</span> <span class="o">*</span> <span class="nx">angleStep</span><span class="p">)),</span>
     <span class="p">}));</span>
 <span class="p">};</span>
+</pre></div>
 
-<span class="kr">const</span> <span class="nx">genIrregularPolygon</span> <span class="o">=</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span class="kr">const</span> <span class="nx">genIrregularPolygon</span> <span class="o">=</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span>
   <span class="nx">center</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">object</span><span class="p">({</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="kr">int</span><span class="p">,</span> <span class="nx">y</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="kr">int</span> <span class="p">}),</span>
   <span class="nx">radii</span><span class="o">:</span> <span class="nx">gen</span><span class="p">.</span><span class="nx">array</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">intWithin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">{</span> <span class="nx">minSize</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">maxSize</span><span class="o">:</span> <span class="mi">20</span> <span class="p">}),</span>
 <span class="p">})</span>
@@ -13305,7 +13292,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13423,7 +13410,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -13440,7 +13427,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 
